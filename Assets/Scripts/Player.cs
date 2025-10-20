@@ -65,7 +65,6 @@ public class Player : MonoBehaviour
             float t = Mathf.Clamp01( (jumpTime / jumpMaxTime) );
             // ahora lo convertimos en un valor que va desde 0.5 a 1.0
             t = Mathf.Lerp(0.5f, 1.0f, t);
-            print(t);
 
             rb.AddForceY(jumpF * t, ForceMode2D.Impulse);
             saltar = false;
@@ -85,6 +84,21 @@ public class Player : MonoBehaviour
             monedas++;
             // actualizamos el UI
             playerUI.ActualizarContadorMonedas(monedas);
+        }
+
+        if (collision.gameObject.tag == "Door")
+        {
+            Puerta door = collision.gameObject.GetComponent<Puerta>();
+            door.Open();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Door")
+        {
+            Puerta door = collision.gameObject.GetComponent<Puerta>();
+            door.Close();
         }
     }
 
