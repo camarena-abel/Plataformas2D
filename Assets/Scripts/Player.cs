@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     float axisH;
     float jumpTime = 0f;
     int monedas = 0;
+    int vida = 100;
     bool saltar = false;
 
     [SerializeField]
@@ -69,6 +70,26 @@ public class Player : MonoBehaviour
             rb.AddForceY(jumpF * t, ForceMode2D.Impulse);
             saltar = false;
             jumpTime = 0f;
+        }
+    }
+
+    private void ReceiveDamage(int q)
+    {
+        vida -= q;
+        if (vida <= 0)
+        {
+            print("Game over");
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            EnemigoX enemy = collision.gameObject.GetComponent<EnemigoX>();
+            int danyo = enemy.GetDamage();
+            ReceiveDamage(danyo);
         }
     }
 

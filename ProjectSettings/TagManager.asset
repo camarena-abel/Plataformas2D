@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - Door
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 895975009
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
