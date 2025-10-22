@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemigoX : MonoBehaviour
+public abstract class EnemigoX : MonoBehaviour
 {
     [SerializeField]
     int vida = 30;
@@ -12,4 +12,16 @@ public class EnemigoX : MonoBehaviour
     {
         return danyo;
     }
+
+    public void ChangeLife(int damage)
+    {
+        vida -= damage;
+        if (vida <= 0)
+        {
+            Destroy(gameObject, 1f);
+        }
+    }
+
+    public abstract void ReceiveDamage();
+    
 }

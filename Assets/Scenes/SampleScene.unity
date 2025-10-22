@@ -4007,9 +4007,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5280991803856246907, guid: a1cd19192d432c0448f2ea0c1624a8bb, type: 3}
+      propertyPath: barraDeVida
+      value: 
+      objectReference: {fileID: 958689986}
+    - target: {fileID: 5280991803856246907, guid: a1cd19192d432c0448f2ea0c1624a8bb, type: 3}
       propertyPath: contadorMonedas
       value: 
       objectReference: {fileID: 453317377}
+    - target: {fileID: 8949401959867209573, guid: a1cd19192d432c0448f2ea0c1624a8bb, type: 3}
+      propertyPath: magic
+      value: 
+      objectReference: {fileID: 8015927524292053093, guid: a758325189a70a948a55d6687976f303, type: 3}
     - target: {fileID: 8949401959867209573, guid: a1cd19192d432c0448f2ea0c1624a8bb, type: 3}
       propertyPath: jumpMaxTime
       value: 0.1
@@ -4088,10 +4096,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5648436480912027545, guid: af993eda7c8cd3448888408b3d3aad78, type: 3}
-      propertyPath: m_Mass
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6075396061637698103, guid: af993eda7c8cd3448888408b3d3aad78, type: 3}
       propertyPath: m_Name
       value: EnemigoA
