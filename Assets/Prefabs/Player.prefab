@@ -179,17 +179,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7098498b3e1ff49aa9522164a7e29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magic: {fileID: 8015927524292053093, guid: a758325189a70a948a55d6687976f303, type: 3}
   speedF: 30
   jumpF: 20
-  jumpMaxTime: 0.3
+  jumpMaxTime: 0.1
   hitF: 15
   recoveryMaxTime: 2
   meleeMaxTime: 0.5
+  magicMaxTime: 0.5
   groundTest: {fileID: 1159632077680906050}
   groundTestRadius: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  bulletLayer:
+    serializedVersion: 2
+    m_Bits: 448
 --- !u!114 &5280991803856246907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +221,7 @@ GameObject:
   m_Layer: 0
   m_Name: GroundTest
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

@@ -20,6 +20,11 @@ public class EnemigoA : EnemigoX
         {
             ReceiveDamage();
         }
+        if (collision.gameObject.tag == "Magic")
+        {
+            ReceiveDamage();
+            Destroy(collision.gameObject);
+        }
     }
 
 

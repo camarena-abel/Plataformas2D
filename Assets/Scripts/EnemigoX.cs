@@ -8,6 +8,9 @@ public abstract class EnemigoX : MonoBehaviour
     [SerializeField]
     int danyo = 10;
 
+    [SerializeField]
+    Transform explosion;
+
     public int GetDamage()
     {
         return danyo;
@@ -18,7 +21,11 @@ public abstract class EnemigoX : MonoBehaviour
         vida -= damage;
         if (vida <= 0)
         {
-            Destroy(gameObject, 1f);
+            Destroy(gameObject);
+            if (explosion)
+            {
+                Instantiate(explosion, transform.position, Quaternion.identity);
+            }
         }
     }
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5648436480912027545}
   - component: {fileID: 971612262470698817}
   - component: {fileID: 953177633163053866}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemigoA
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 30
   danyo: 10
+  explosion: {fileID: 9049400523676897682, guid: 2cfaec6aa064efe4dbf5786cd1a719e8, type: 3}
 --- !u!95 &953177633163053866
 Animator:
   serializedVersion: 7

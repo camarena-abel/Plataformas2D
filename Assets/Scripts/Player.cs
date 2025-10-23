@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
 
 public class Player : MonoBehaviour
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     Transform meleeRight;
     Transform meleeLeft;
     float meleeTime;
+    float magicTime;
 
     [SerializeField]
     Transform magic;
@@ -41,6 +43,9 @@ public class Player : MonoBehaviour
     float meleeMaxTime = 0.5f; // tiempo del ataque melee
 
     [SerializeField]
+    float magicMaxTime = 0.5f; // tiempo del ataque magico | disparo
+
+    [SerializeField]
     Transform groundTest;
 
     [SerializeField]
@@ -48,6 +53,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     LayerMask groundLayer;
+
+    [SerializeField]
+    LayerMask bulletLayer;
 
     void Start()
     {
@@ -106,6 +114,20 @@ public class Player : MonoBehaviour
                 meleeRight.gameObject.SetActive(false);
                 meleeLeft.gameObject.SetActive(false);
                 meleeTime = 0f;
+            } else
+            {
+                // si cambia de direccion, cambiamos el arma de sitio
+                if ((axisH < 0f) && (meleeRight.gameObject.activeSelf))
+                {
+                    meleeRight.gameObject.SetActive(false);
+                    meleeLeft.gameObject.SetActive(true);
+                }
+                if ((axisH > 0f) && (meleeLeft.gameObject.activeSelf))
+                {
+                    meleeRight.gameObject.SetActive(true);
+                    meleeLeft.gameObject.SetActive(false);
+                }
+
             }
         }
 
@@ -123,15 +145,44 @@ public class Player : MonoBehaviour
         }
 
         // ataque magico
-        if (Input.GetButtonDown("Fire2"))
+
+        // ya estamos atacando?
+        if (magicTime > 0f)
         {
+            magicTime = Mathf.Clamp(magicTime - Time.deltaTime, 0f, magicMaxTime);
+        }
+
+        if (Input.GetButtonDown("Fire2") && (magicTime == 0f))
+        {
+            Transform go;
+            Magic m;
             if (derecha)
-            {
-                Instantiate(magic, meleeRight.position, Quaternion.identity);
-            }
+                go = Instantiate(magic, meleeRight.position, Quaternion.identity);                
             else
+                go = Instantiate(magic, meleeLeft.position, Quaternion.identity);
+            m = go.GetComponent<Magic>();
+            if (derecha)
+                m.Dir = Vector2.right;
+            else
+                m.Dir = Vector2.left;
+            magicTime = magicMaxTime;
+        }
+
+        // disparo con arma de fuego
+        if (Input.GetButtonDown("Fire3") && (magicTime == 0f))
+        {
+            RaycastHit2D rh;
+            if (derecha)
+                rh = Physics2D.Raycast(rb.position, Vector2.right, Mathf.Infinity, bulletLayer);
+            else
+                rh = Physics2D.Raycast(rb.position, Vector2.left, Mathf.Infinity, bulletLayer);
+            if (rh.transform)
             {
-                Instantiate(magic, meleeLeft.position, Quaternion.identity);
+                EnemigoX eX = rh.transform.GetComponent<EnemigoX>();
+                if (eX)
+                {
+                    eX.ReceiveDamage();
+                }
             }
         }
 
@@ -183,8 +234,8 @@ public class Player : MonoBehaviour
 
         if (vida <= 0)
         {
-            print("Game over");
             Destroy(gameObject);
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

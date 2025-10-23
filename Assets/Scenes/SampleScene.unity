@@ -460,9 +460,9 @@ GameObject:
   - component: {fileID: 320418059}
   - component: {fileID: 320418058}
   - component: {fileID: 320418060}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Techo
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -744,9 +744,9 @@ GameObject:
   - component: {fileID: 448735404}
   - component: {fileID: 448735403}
   - component: {fileID: 448735405}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ParedDerecha
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1227,7 +1227,7 @@ GameObject:
   - component: {fileID: 577653561}
   m_Layer: 6
   m_Name: Plataforma1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1845,7 +1845,7 @@ GameObject:
   - component: {fileID: 1038044386}
   m_Layer: 6
   m_Name: Plataforma3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2116,7 +2116,7 @@ GameObject:
   - component: {fileID: 1149996307}
   m_Layer: 6
   m_Name: Suelo (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2438,9 +2438,9 @@ GameObject:
   - component: {fileID: 1363281802}
   - component: {fileID: 1363281801}
   - component: {fileID: 1363281803}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ParedIzquierda
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2767,7 +2767,7 @@ GameObject:
   - component: {fileID: 1570053531}
   m_Layer: 6
   m_Name: Suelo
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3646,7 +3646,7 @@ GameObject:
   - component: {fileID: 2094293413}
   m_Layer: 6
   m_Name: Plataforma2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4014,14 +4014,6 @@ PrefabInstance:
       propertyPath: contadorMonedas
       value: 
       objectReference: {fileID: 453317377}
-    - target: {fileID: 8949401959867209573, guid: a1cd19192d432c0448f2ea0c1624a8bb, type: 3}
-      propertyPath: magic
-      value: 
-      objectReference: {fileID: 8015927524292053093, guid: a758325189a70a948a55d6687976f303, type: 3}
-    - target: {fileID: 8949401959867209573, guid: a1cd19192d432c0448f2ea0c1624a8bb, type: 3}
-      propertyPath: jumpMaxTime
-      value: 0.1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
