@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magic: {fileID: 8015927524292053093, guid: a758325189a70a948a55d6687976f303, type: 3}
+  bullet: {fileID: 3755010186479552625, guid: 3d277857584dc0d41ad86462c42a15c9, type: 3}
   speedF: 30
   jumpF: 20
   jumpMaxTime: 0.1

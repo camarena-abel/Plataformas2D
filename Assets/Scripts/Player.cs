@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
     Transform magic;
 
     [SerializeField]
+    Transform bullet;
+
+    [SerializeField]
     float speedF = 15f;
 
     [SerializeField]
@@ -172,10 +175,19 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Fire3") && (magicTime == 0f))
         {
             RaycastHit2D rh;
+            Transform bulletTransform;
             if (derecha)
+            {
                 rh = Physics2D.Raycast(rb.position, Vector2.right, Mathf.Infinity, bulletLayer);
+                bulletTransform = Instantiate(bullet, meleeRight.position, Quaternion.Euler(-180f, -90f, 0f));
+            }                
             else
+            {
                 rh = Physics2D.Raycast(rb.position, Vector2.left, Mathf.Infinity, bulletLayer);
+                bulletTransform = Instantiate(bullet, meleeLeft.position, Quaternion.Euler(180f, 90f, 0f));
+            }
+            Destroy(bulletTransform.gameObject, 1f);
+                
             if (rh.transform)
             {
                 EnemigoX eX = rh.transform.GetComponent<EnemigoX>();
