@@ -10,6 +10,8 @@ TagManager:
   - PlayerMelee
   - Magic
   - Wall
+  - EvilMagic
+  - SavePoint
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Ground
   - Walls
   - Enemies
-  - 
+  - Player
   - 
   - 
   - 

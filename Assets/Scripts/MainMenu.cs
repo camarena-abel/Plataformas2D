@@ -10,7 +10,10 @@ public class MainMenu : MonoBehaviour
 
     public void Continue()
     {
-        Debug.LogError("Pendiente de hacer!");
+        if (GameState.Load())
+        {
+            SceneManager.LoadScene("SampleScene");
+        }        
     }
 
     public void ExitGame()

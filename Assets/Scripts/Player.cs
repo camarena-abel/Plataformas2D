@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
     PlayerUI playerUI;
     float axisH;
     float jumpTime = 0f;
-    int monedas = 0;
-    int vida = 100;
     bool saltar = false;
     Vector2 hitDirection;      // direccion en la que sale despedido el player al recibir un impacto
     bool hitReceived = false;  // indica si el player ha recibido un impacto
@@ -67,6 +65,10 @@ public class Player : MonoBehaviour
         playerUI = GetComponent<PlayerUI>();
         meleeRight = transform.Find("MeleeRight");
         meleeLeft = transform.Find("MeleeLeft");
+
+        // actualizamos UI
+        playerUI.ActualizarBarraDeVida(GameState.gameData.life);
+        playerUI.ActualizarContadorMonedas(GameState.gameData.coins);
     }
 
     void Update()
@@ -241,13 +243,25 @@ public class Player : MonoBehaviour
 
     private void ReceiveDamage(int q)
     {
-        vida -= q;
-        playerUI.ActualizarBarraDeVida(vida);
+        GameState.gameData.life -= q;
+        playerUI.ActualizarBarraDeVida(GameState.gameData.life);
 
-        if (vida <= 0)
+        if (GameState.gameData.life <= 0)
         {
             Destroy(gameObject);
             SceneManager.LoadScene("MainMenu");
+        }
+    }
+
+    private void HitReceived(int damage)
+    {
+        if (recoveryTime <= 0f)
+        {
+            ReceiveDamage(damage);
+
+            // hemos recibido daño!
+            // tenemos un periodo de invulnerabilidad temporal
+            recoveryTime = recoveryMaxTime;
         }
     }
 
@@ -272,15 +286,7 @@ public class Player : MonoBehaviour
             } else
             {
                 // si no somos invulnerables, recibimos daño
-                if (recoveryTime <= 0f)
-                {
-                    int danyo = enemy.GetDamage();
-                    ReceiveDamage(danyo);
-
-                    // hemos recibido daño!
-                    // tenemos un periodo de invulnerabilidad temporal
-                    recoveryTime = recoveryMaxTime;
-                }
+                HitReceived(enemy.GetDamage());                
             }
 
             hitReceived = true;
@@ -296,15 +302,29 @@ public class Player : MonoBehaviour
             // destruimos el padre (el gameobject moneda)
             Destroy(transformCollider.parent.gameObject);
             // aumentamos el contador de monedas
-            monedas++;
+            GameState.gameData.coins++;
             // actualizamos el UI
-            playerUI.ActualizarContadorMonedas(monedas);
+            playerUI.ActualizarContadorMonedas(GameState.gameData.coins);
         }
 
         if (collision.gameObject.tag == "Door")
         {
             Puerta door = collision.gameObject.GetComponent<Puerta>();
             door.Open();
+        }
+
+        if (collision.gameObject.tag == "EvilMagic")
+        {
+            // recibimos daño
+            HitReceived(10);
+            // destruimos la bola de energia
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "SavePoint")
+        {
+            print("partida guardada!");
+            GameState.Save();
         }
     }
 

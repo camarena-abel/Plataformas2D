@@ -13,6 +13,7 @@ public class EnemigoA : EnemigoX
     void Start()
     {
         animator = GetComponent<Animator>();
+        CheckIfAlreadyDefeated();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
